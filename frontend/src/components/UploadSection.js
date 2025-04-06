@@ -8,7 +8,7 @@ const UploadSection = ({ setOriginalImage, setUpscaledImage, setPsnr, setSnackba
   const [method, setMethod] = useState('lagrange');
   const [isLoading, setIsLoading] = useState(false); // Trạng thái đợi
 
-  const API_URL = "https://5f9f-35-247-64-96.ngrok-free.app";
+  const API_URL = "http://localhost:8000";
 
   const handleFileChange = (e) => {
     const selectedFile = e.target.files[0];
@@ -43,7 +43,7 @@ const UploadSection = ({ setOriginalImage, setUpscaledImage, setPsnr, setSnackba
       const { image_path, result } = response.data;
 
       // Hiển thị ảnh đã upscale
-      // Do trình duyệt cache lại ảnh upscaled_image, nên khi bạn gửi request mới nhưng URL giống hệt (ví dụ: /static/uploads/result.jpg), thì trình duyệt nghĩ: "Ờ cái này mình đã tải rồi mà, khỏi tải lại"
+      // Do trình duyệt cache lại ảnh upscaled_image, nên khi gửi request mới nhưng URL giống hệt (ví dụ: /static/uploads/result.jpg), thì trình duyệt nghĩ: "Ờ cái này mình đã tải rồi mà, khỏi tải lại"
       setUpscaledImage(`${API_URL}${image_path}?t=${new Date().getTime()}`);
 
       // Parse result và lấy PSNR dựa trên method
@@ -107,3 +107,4 @@ const UploadSection = ({ setOriginalImage, setUpscaledImage, setPsnr, setSnackba
 };
 
 export default UploadSection;
+
