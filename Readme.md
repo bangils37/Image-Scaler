@@ -1,7 +1,3 @@
-# Readme
-
-Created: April 6, 2025 3:33 PM
-
 # ImageScaler Project
 
 ![image.png](images/image.png)
